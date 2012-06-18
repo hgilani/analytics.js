@@ -58,14 +58,14 @@ names, such as Bob "shared on facebook".
 
 ```javascript
 
-seg.track('Played a Song', {
+analytics.track('Played a Song', {
     'Title'       : 'Eleanor Rigby',
     'Artist'      : 'Beatles',
     'Playlist'    : 'Popular'
 });
 
 
-seg.track('Bought a t-shirt', {
+analytics.track('Bought a t-shirt', {
     'Product Title'  : 'Dinosaur Attack',
     'Size'           : 'Medium',
     'revenue'        : 15.99
@@ -122,7 +122,7 @@ of analytics.js:
 
 After you determine what traits and actions you want to track, add identify
 statements where you have access to the visitor object. Then, add
-track statement whenever the user performs actions that are important to you.
+track statement whenever the visitor performs actions that are important to you.
 
 If applicable, we recommend tracking actions such as:
 
@@ -133,7 +133,7 @@ If applicable, we recommend tracking actions such as:
 * Visitor upgrading a plan
 * VIsitor sharing on social service
 
-as well as any actions that show whether a user is engaged versus not. If you're
+as well as any actions that show whether a visitor is engaged versus not. If you're
 YouTube this would be "watched video", or if you're Amazon, it would be "bought an item".
 
 
