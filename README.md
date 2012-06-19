@@ -7,8 +7,8 @@ your web application.
 ## Philosophy
 
 We believe every application should have analytics in-grained into it. The
-more data and knowledge you have about how your system is being used, the more
-prepared you'll be to make product decisions. Your users will benefit.
+more data you have about your system and how its being used, the more
+prepared you'll be to make product and marketing decisions. Your users will benefit.
 
 A common misconception is that having analytics means tying yourself to a third
 party analytics service. This is not true, and only becomes the case when
@@ -20,7 +20,7 @@ in analytics.js, and we welcome implementations of any other providers that fit.
 
 ## The API
 
-We tried to keep the abstract API as simple as possible.
+We tried to keep the abstract API to be as simple as possible.
 You 1) recognize visitors, 2) track their actions.
 
 ### Identify
