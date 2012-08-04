@@ -11,6 +11,23 @@ The API is dead simple. You won't want to go back to using some of those dated t
 ## The API
 Our goal for the API was to iron out the kinks that crop up in lots of third-party analytics services API's. Keep things simple!  With analytics you record two things: users and their actions.
 
+### Initialize
+When you're ready to start using **analytics.js**, you make a call to initialize with the analytics providers you want to enable and the settings each one needs. That looks like this:
+
+```javascript
+analytics.initialize({
+    'Google Analytics' : {
+        apiKey : 'UA-XXXXXX-XX'
+    },
+    'Segment.io' : {
+        apiKey : 'mkS9qdwk12d7'
+    }
+});
+```
+
+The settings required will depend on the provider.
+
+
 ### Identify
 Identify is how you tie a user to their actions. You **identify** your user with the `userId` you recognize them by, which is usually an email. The API looks like this:
 
