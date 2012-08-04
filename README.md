@@ -1,17 +1,14 @@
 analytics.js
 ============
+**Every project needs analytics.** The more you know about how your system is being used, the better your product decisions will be. In the end your users will benefit.
 
-**Every project needs analytics.** The more data you collect about how your system is being used, the better your product decisions can be. In the end, your users will benefit.
+But having analytics shouldn't mean your tying yourself to a single third-party analytics service and littering your codebase third-party-specific calls. Changing or adding new providers should be a snap. That's where **analytics.js** comes in. The APIs for most analytics services track the same sorts of metrics, so it's not hard to build an abstraction layer that fits most use cases. And that's what we did! We even use **analytics.js** in [Segment.io](https://segment.io).
 
-But having analytics shouldn't mean your tying yourself to a single third-party analytics service and littering your codebase third-party-specific calls. Changing or adding new providers should be a snap.
+The API is dead simple. You won't want to go back to using some of those dated third-party APIs!
 
-That's where **analytics.js** comes in. The APIs for most analytics services track the same sorts of metrics, so it's not hard to build an abstraction layer that fits most use cases. And that's what we did! We even use **analytics.js** in [Segment.io](https://segment.io).
-
-The API is dead simple. Once you start using it, you won't want to go back to the nastier of the analytics APIs out there!
 
 
 ## The API
-
 Our goal for the API was to iron out the kinks that crop up in lots of third-party analytics services API's. Keep things simple!  With analytics you record two things: users and their actions.
 
 ### Identify
@@ -24,14 +21,15 @@ analytics.identify(userId, traits);
 + `userId` is the ID you refer to your user by.
 + `traits` is an _optional_ dictionary of things you know about the user. Things like: `Subscription Plan`, `Friend Count`, `Age`, etc.
 
-An example **identify** call might look like this:
-
 ```javascript
 analytics.identify('achilles@segment.io', {
     subscriptionPlan : 'Gold',
     friendCount      : 29
 });
 ```
+
+We usually recommend using a backend template to inject an identify with the `userId` straight into the footer of every page of your application. That way no matter what page the user lands on, the call is made.
+
 
 ### Track
 Track is how you record events your users trigger. Whenever your using does something you want to record, **track** that event. The API looks like this:
@@ -43,8 +41,6 @@ analytics.track(event, properties);
 + `event` is the name of the event.
 + `properties` is an _optional_ dictionary of properties for the event. If the event was `Added to Shopping Cart`, it might have properties like `Price`, `Product Category`, etc.
 
-An example **track** might look like this:
-
 ```javascript
 analytics.track('Complete Purchase', {
     price          : 40.20,
@@ -53,85 +49,51 @@ analytics.track('Complete Purchase', {
 ```
 
 
-## How to Use
+## Using analytics.js
 
-### Add analytics.js to your web app
+1. Grab the latest version of **analytics.js** from this repo and add it to your project.
 
-Analytics.js is more of a pattern than a library, but feel free to drop
-analytics.js into your web application. You can then use the global
-window.analytics object in your web application to identify and track.
+2. Open up **analytics.js**, scroll to the bottom, and choose the providers you want to keep (or add your own).
 
-### Choose your providers
+3. Initialize **analytics.js**.
 
-Simply copy the providers you want from the providers/ folder into your version
-of analytics.js. Make sure you add your application specific settings to each provider,
-such as apiKey.
+4. Add an **identify** and some **track** calls to the things you want to record.
 
-Also, add the provider implementation to the list of enabled providers on the bottom
-of analytics.js:
-
-```javascript
-
-    var analytics = {
-
-        /**
-         * Determines whether analytics is enabled in this session
-         * @type {Boolean}
-         */
-        enabled: true,
-
-        //
-        // ADD PROVIDERS HERE
-        //
-
-        providers: [
-
-            GOOGLE_ANALYTICS,
-            SEGMENT_IO,
-            KISSMETRICS,
-            MIXPANEL,
-            INTERCOM_IO
-
-        ]
-    };
-
-```
+5. Profit!
 
 
-### Add identifies and tracks in your app code
+## Questions
 
-After you determine what traits and actions you want to track, add identify
-statements where you have access to the visitor object. Then, add
-track statement whenever the visitor performs actions that are important to you.
+### Where should I put the identify call?
+We usually recommend using a backend template to inject an identify with the `userId` straight into the footer of every page of your application. That way no matter what page the user lands on, the call is made.
 
-If applicable, we recommend tracking actions such as:
+### What traits should I record?
+The single most important trait to record is something like `Membership Level` or `Subscription Type` or however you break your users into different tiers. That way, you can focus on getting people into the higher tiers.
 
-* Visitor logging in
-* Visitor buying something
-* Visitor cancelling a plan
-* Visitor unsubscribing
-* Visitor upgrading a plan
-* VIsitor sharing on social service
+Other things you might want to identify are things like `Friend Count` or ``
 
-as well as any actions that show whether a visitor is engaged versus not. If you're
-YouTube this would be "watched video", or if you're Amazon, it would be "bought an item".
+### What events should I track?
+The best way to figure out what events to track is to ask your to questions: "what do I want my users to do more of?" and "what do i want my users to do less of?". For example:
+
++ Completed Purchase
++ Upgraded Plan
++ Shared on Facebook
++ Watched a Video
++ Invited a Friend
+
+or
+
++ Cancelled their Account
++ Unsuscribed
++ Downgraded Plan
++ Left Negative Review
+
+### But Google Analytics doesn't have traits! or Intercom doesn't have events!
+That's all right. Nothing will break. The providers will automatically record anything the service permits under the covers, so you don't have to worry about anything missing out.
 
 
-
-## Dealing with Provider Inconsistencies
-
-Google Analytics and Segment.io both track page loads automatically, while
-Mixpanel does not. Intercom.io only does identifies, etc.
-
-You'll want to make sure that you understand what each provider does to make
-sure you have all your bases covered.
-
-
-
-## Implementing New Providers
-
-Implementing new providers is fairly painless. Check the files in the providers/
-folder for examples, and send us a pull request once you're done.
+## Contributing
+We love contributions! If you have a provider you'd like to add, feel free to submit a pull request. You can check out the other providers that we've already written for guidance. (Please make sure to add tests!)
 
 
 
