@@ -25,7 +25,7 @@ analytics.initialize({
 });
 ```
 
-The settings required will depend on the provider.
+Did we mention this means you never need to mess with analytics snippets again? Bonus!
 
 
 ### Identify
