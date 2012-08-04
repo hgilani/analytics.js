@@ -59,7 +59,7 @@ analytics.track('Complete Purchase', {
 
 4. Add an **identify** and some **track** calls to the things you want to record.
 
-5. Profit!
+5. Spend all day swapping your analytics providers in and out just because you can!
 
 
 ## Questions
@@ -70,7 +70,7 @@ We usually recommend using a backend template to inject an identify with the `us
 ### What traits should I record?
 The single most important trait to record is something like `Membership Level` or `Subscription Type` or however you break your users into different tiers. That way, you can focus on getting people into the higher tiers.
 
-Other things you might want to identify are things like `Friend Count` or ``
+Other things you might want to **identify** are things like `Friend Count`, `Company`, `Business Type`, `Employee Count`, etc.
 
 ### What events should I track?
 The best way to figure out what events to track is to ask your to questions: "what do I want my users to do more of?" and "what do i want my users to do less of?". For example:
@@ -88,12 +88,12 @@ or
 + Downgraded Plan
 + Left Negative Review
 
-### But Google Analytics doesn't have traits! or Intercom doesn't have events!
-That's all right. Nothing will break. The providers will automatically record anything the service permits under the covers, so you don't have to worry about anything missing out.
+### Google Analytics doesn't have traits! ... Intercom doesn't have events!
+That's all right. If a provider doesn't handle a certain type of call, nothing will break. So you don't have to worry about anything.
 
 
 ## Contributing
-We love contributions! If you have a provider you'd like to add, feel free to submit a pull request. You can check out the other providers that we've already written for guidance. (Please make sure to add tests!)
+We love contributions! If you have a provider you'd like to add, feel free to submit a pull request. You can check out the providers that we've already written for guidance. (Please make sure to add tests!)
 
 
 
