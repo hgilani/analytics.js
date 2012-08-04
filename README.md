@@ -1,16 +1,11 @@
 analytics.js
 ============
 
-Every project needs analytics, regardless of which provider you use. **analytics.js** is an abstraction layer for your analytics providers, so you aren't littering your codebase with provider-specific calls. With **analytics.js** you can swap new analytics services in and out in seconds.
+**Every project needs analytics.** The more data you collect about how your system is being used, the better your product decisions can be. In the end, your users will benefit.
 
+But having analytics shouldn't mean your tying yourself to a single third-party analytics service and littering your codebase third-party-specific calls. Changing or adding new providers should be a snap.
 
-## Philosophy
-
-We think every application needs analytics. The more data you collect about how your system is being used, the better your product decisions can be. In the end, your users will benefit.
-
-But having analytics shouldn't mean your tying yourself to a single third-party analytics service. You shouldn't have to muck up your codebase with calls to their methods. And changing analytics services should be a snap.
-
-That's where **analytics.js** comes in. The APIs for most analytics services track the same sorts of metrics, so it's not hard to build an abstraction layer that fits most use cases. And that's what we did! We even use **analytics.js** in [Segment.io](https://segment.io) itself.
+That's where **analytics.js** comes in. The APIs for most analytics services track the same sorts of metrics, so it's not hard to build an abstraction layer that fits most use cases. And that's what we did! We even use **analytics.js** in [Segment.io](https://segment.io).
 
 The API is dead simple. Once you start using it, you won't want to go back to the nastier of the analytics APIs out there!
 
